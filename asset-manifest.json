@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ispirer-test/static/css/main.f2191ea2.css",
+    "main.js": "/ispirer-test/static/js/main.e58ad57c.js",
+    "index.html": "/ispirer-test/index.html",
+    "main.f2191ea2.css.map": "/ispirer-test/static/css/main.f2191ea2.css.map",
+    "main.e58ad57c.js.map": "/ispirer-test/static/js/main.e58ad57c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f2191ea2.css",
+    "static/js/main.e58ad57c.js"
+  ]
+}
