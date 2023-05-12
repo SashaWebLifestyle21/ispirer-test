@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react';
+import {Navigate, Route, Routes} from "react-router-dom";
+import Home from "./pages/Home/Home";
+import StoryPage from "./pages/StoryPage/StoryPage";
+import {observer} from "mobx-react-lite";
+import news from "./store/news";
 
 function App() {
+
+    useEffect(() => {
+        news.getNews()
+    }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Routes>
+            <Route path='/' element={<Navigate replace to='/home' />} />
+            <Route path='/home' element={<Home />} />
+            <Route path='news/*'>
+                {news.newsIds && news.newsIds.map(storyId => {
+                    return <Route key={storyId} path={storyId.toString()} element={<StoryPage id={storyId} />}/>
+                })}
+            </Route>
+        </Routes>
     </div>
   );
 }
 
-export default App;
+export default observer(App);
